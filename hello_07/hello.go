@@ -1,11 +1,13 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"html/template"
 	"log"
 	"os"
 	"sort" // 排序
+	"time"
 )
 
 func appendInt(x []int, y int) []int {
@@ -24,6 +26,8 @@ func appendInt(x []int, y int) []int {
 	z[len(x)] = y
 	return z
 }
+
+var period = flag.Duration("period", 1*time.Second, "sleep period")
 
 func main() {
 	var runes []rune
@@ -108,4 +112,9 @@ func main() {
 	if err := t.Execute(os.Stdout, data); err != nil {
 		log.Fatal(err)
 	}
+
+	flag.Parse()
+	fmt.Printf("Sleeping for %v...", *period)
+	time.Sleep(*period)
+	fmt.Println()
 }

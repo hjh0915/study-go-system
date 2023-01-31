@@ -87,3 +87,16 @@ func Bonus(e *Employee, percent int) int {
 JSON
 =====
 调用json.Marshal函数实现结构体slice转为JSON的过程
+``` go 
+type Movie struct {
+    Title  string
+    Year   int  `json:"released"`
+    Color  bool `json:"color,omitempty"`
+    Actors []string
+}
+```
+反引号可以切换名字
+
+可变参数
+=======
+在声明可变参数函数时，需要在参数列表的最后一个参数类型之前加上省略符号“...”
