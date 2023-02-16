@@ -28,6 +28,14 @@ proto
 =========
 使用 grpc.insecure_channel('localhost:50051') 进行连接 服务端， 接着在这个 channel 上创建 stub ， 在 msg_pb2_grpc 里可以找到 MsgServiceStub 这个类相关信息。这个 stub 可以调用远程的 GetMsg 函数。 MsgRequest 中的 name 即 msg.proto 中定义的数据。在回应里可以得到 msg.proto 中定义的 msg 。
 
+关键的步骤为：
+===========
+1、连接rpc服务器；  
+
+2、对service获取一个stub用于调用接口；  
+
+3、发送数据、接收数据。  
+
 运行
 ====
 运行服务器，它会监听50051端口：
